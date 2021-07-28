@@ -95,32 +95,6 @@
     </div>
     <br>
     
-        
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script>
-
-    var gitalk = new Gitalk({
-        clientID: '0bf89d2c80b32627f82d',
-        clientSecret: '732696f60113d4dd76058b587a70c18f6a3cc3dd',
-        repo: 'blog_comments',
-        owner: 'drway',
-        admin: ['drway'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    })
-
-    gitalk.render('gitalk-container')
-
-</script>
-
-        
-
-        
-    
     <div class="comment"></div>
 </div>
 <footer class="mdui-container footer ">
@@ -173,4 +147,29 @@
 
 </body>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    $('.comment').bind('DOMNodeInserted',()=>{
+        $('.comment').unbind()
+
+        $('.vbtn').addClass(' mdui-btn mdui-color-theme-accent mdui-ripple')
+    })
+
+    let valine = new Valine({
+        el: '.comment',
+        
+        app_id: '774eyLCmAIiTIqMnkyC9kJSg-gzGzoHsz',
+        
+        
+        app_key: '6udmJ6vx0pdiUVsJeB4NtrrM',
+        
+        
+        placeholder: '欢迎评论desu~',
+        
+        path: window.location.pathname,
+        pageSize: 30,
+        avatar:'mm',
+        notify:true
+    })
+</script>
 </html>
